@@ -1,0 +1,5 @@
+repos:
+- branch: '16.0'
+  path: odoo
+  type: integrated
+  url: https://github.com/odoo/odoo

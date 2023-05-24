@@ -1,0 +1,9 @@
+.DS_Store
+*/.DS_Store
+odoo/
+enterprise/
+themes/
+.vscode/settings.json
+
+*.pyc
+__pycache__
