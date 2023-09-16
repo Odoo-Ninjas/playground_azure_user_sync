@@ -1,8 +1,8 @@
 .DS_Store
 */.DS_Store
-odoo/
-enterprise/
-themes/
+/odoo
+/enterprise
+/themes
 .vscode/settings.json
 
 *.pyc
