@@ -1,6 +1,33 @@
+common:
+  vars:
+    VERSION: '14.0'
 repos:
-- branch: '15.0'
+- branch: ${VERSION}
   path: odoo
   sha: e41dcde8d66c74c8ad114c76ea6ed9c607e04455
   type: integrated
   url: https://github.com/odoo/odoo
+- branch: ${VERSION}
+  path: addons_zync/queue
+  sha: 6e2bbccaef966f8448bc04be75d8d0b4550553b8
+  type: integrated
+  url: git@github.com:Odoo-Ninjas/zebroo-sync
+- branch: ${VERSION}
+  path: addons_OCA/queue
+  sha: 4224ac18116121f7065c0dd2e53b7fe04f160911
+  type: integrated
+  url: git@github.com:OCA/queue
+- branch: ${VERSION}
+  path: addons_OCA/web
+  sha: 9582e116393920c5b11bd7709cc541b40e99865e
+  type: integrated
+  url: git@github.com:OCA/web
+- branch: main
+  path: addons_tools/method_hook_triggers
+  sha: 2c5896f97a7234914a67b2ad28ea19895045fb05
+  type: integrated
+  url: git@github.com:Odoo-Ninjas/odoo-method-hooktriggers.git
+- branch: oauth
+  path: addons_zbsync
+  type: submodule
+  url: git@github.com:Odoo-Ninjas/zbsync
