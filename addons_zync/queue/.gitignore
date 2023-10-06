@@ -1,0 +1,13 @@
+/.vscode
+.debug
+*.pyc
+__pycache__
+/odoo
+/enterprise
+/themes
+/requirements.hash
+/requirements.txt.all
+/requirements.txt
+/addons_OCA
+/addons_tools
+/.odoo.ast

@@ -1,0 +1,21 @@
+{
+    "application": False,
+    "author": "Marc Wimmer (marc@itewimmer.de)",
+    "css": [],
+    "data": [
+        "data/local_connection.xml",
+        "views/connection.xml",
+        "views/domains.xml",
+        "views/dumper.xml",
+        "views/grabber.xml",
+        "views/menu.xml",
+        "security/ir.model.access.csv",
+    ],
+    "demo": [],
+    "depends": ["zbsync", "zbsync_teststruct"],
+    "external_dependencies": {"bin": [], "python": ["odoorpc"]},
+    "name": "zbsync_odoo",
+    "qweb": [],
+    "test": [],
+    "version": "1.1",
+}

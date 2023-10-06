@@ -1,0 +1,31 @@
+<odoo>
+    <data noupdate='0'>
+        <record id="view_zbs_grabber_file_form" model="ir.ui.view">
+            <field name="name">zbs.grabber.file form</field>
+            <field name="model">zbs.grabber.file</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header></header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" colspan="4" class="oe_inline" />
+                            </h1>
+                        </div>
+                        <group string="" col="2">
+                            <field name="filepath" />
+                            <field name="glob" />
+                            <field name="recursive"/>
+                            <field name="action_after_read"/>
+                            <field name="destination_path" attrs="{'invisible': [('action_after_read', '=', False)]}"/>
+                            <field name="limit"/>
+                            <field name="content_type" required="1"/>
+                            <field name="encoding" attrs="{'required': [('content_type', '=', 'text')]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

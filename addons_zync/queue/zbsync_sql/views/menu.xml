@@ -1,0 +1,28 @@
+<odoo>
+
+	<record id='dumpers_action' model='ir.actions.act_window'>
+		<field name='name'>SQL</field>
+		<field name='res_model'>zbs.dumper.sql</field>
+		<field name='view_mode'>tree,form</field>
+		<field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+	</record>
+	<menuitem parent="zbsync.menu_dumpers" id="menu_dumpers" action="dumpers_action"/>
+
+	<record id='grabbers_action' model='ir.actions.act_window'>
+		<field name='name'>SQL</field>
+		<field name='res_model'>zbs.grabber.sql</field>
+		<field name='view_mode'>tree,form</field>
+		<field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+	</record>
+	<menuitem parent="zbsync.menu_grabbers" id="menu_grabbers" action="grabbers_action"/>
+
+	<record id='connections_action' model='ir.actions.act_window'>
+		<field name='name'>SQL</field>
+		<field name='res_model'>zbs.connection.sql</field>
+		<field name='view_mode'>tree,form</field>
+		<field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+	</record>
+	<menuitem parent="zbsync.menu_connections" id="menu_connections" action="connections_action"/>
+
+
+</odoo>

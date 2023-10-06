@@ -1,0 +1,4 @@
+model_id:id,group_id:id,id,name,perm_read,perm_write,perm_create,perm_unlink
+model_zbs_grabber_soap,zbsync.group_manager,access_zbs_grabber_soap_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_connection_soap,zbsync.group_manager,zbs_connection_soap_zbsync_group_manager,n/a,1,1,1,1
+

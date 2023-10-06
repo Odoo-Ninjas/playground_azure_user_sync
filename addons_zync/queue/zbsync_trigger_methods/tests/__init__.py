@@ -1,0 +1,1 @@
+from . import test_method_hook_trigger

@@ -1,0 +1,12 @@
+<odoo>
+    <record id="trigger_form" model="ir.ui.view">
+        <field name="name">zbs.trigger form</field>
+        <field name="model">zbs.trigger</field>
+        <field name="inherit_id" ref="worker_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+            </xpath>
+        </field>
+    </record>
+</odoo>

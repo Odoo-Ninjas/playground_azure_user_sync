@@ -1,0 +1,181 @@
+<odoo>
+    <data noupdate='0'>
+
+        <record id="view_zbs_pipeline_form" model="ir.ui.view">
+            <field name="name">zbs.pipeline form</field>
+            <field name="model">zbs.pipeline</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="show_instances" string="Show Instances" type="object" />
+                        <button name="run_test" string="Test Run" type="object" />
+                        <button name="start_from_ui" string="Start Normal" type="object" />
+                        <button name="snapshot" string="Snapshot" type="object" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" colspan="4" class="oe_inline" />
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page string="Flow">
+                                <button name="add_worker" string="Add Worker" type="object" />
+                                <field name="line_ids" nolabel="1">
+                                    <tree editable="bottom" create='0'>
+                                        <button name="open_worker_detail" string="" type="object" icon="fa-external-link" attrs="{'invisible': [('can_open_worker_detail', '=', False)]}"/>
+                                        <field name="can_open_worker_detail" invisible="1"/>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="ttype_name"/>
+                                        <field name="worker_id"/>
+                                        <field name="enabled" widget="boolean_toggle"/>
+                                        <field name="continue_immediately" widget="boolean_toggle"/>
+                                        <field name="loglevel" class="open_line" optional="hide"/>
+                                        <field name="path_content" class="open_line" optional="hide"/>
+                                        <field name="keep_input_filter" class="open_line" optional="hide"/>
+                                        <field name="condition" class="open_line" optional="hide"/>
+                                        <field name="range" class="open_line" optional="hide"/>
+                                        <field name="batchsize" class="open_line" optional="show"/>
+                                        <field name="group_continue_here" class="open_line" optional="hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Details">
+                                <group string="" col="2">
+                                    <field name="queuejob_channel"/>
+                                    <field name="tag_ids" widget="many2many_tags"/>
+                                    <field name="limit_parallel_runs"/>
+                                    <field name="logoutput"/>
+                                    <field name="keep_instances_for_days"/>
+                                </group>
+                            </page>
+                            <page name="cronjobs" string="Cronjobs1">
+                                <field name="cronjob_ids" context="{
+                                    'active_id': context.get('active_id'),
+                                    'active_model': context.get('active_model'),
+                                    'tree_view_ref': 'zbsync.view_zbs_cronstart_tree',
+                                }"/>
+                            </page>
+                            <page string="Versions">
+                                <field name="version_ids" nolabel="1">
+                                    <tree>
+                                        <button name="download" type="object" icon='fa-download'/>
+                                        <field name="date"/>
+                                        <!-- <field name="content"/> -->
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_zbs_pipeline_kanban" model="ir.ui.view">
+            <field name="model">zbs.pipeline.line</field>
+            <field name="name">Pipeline Kanban</field>
+            <field name='type'>kanban</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="sequence">
+                    <field name="worker_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <ul>
+                                <!-- <li t-if="record.name.raw_value">Name <field name="name"/>
+                                </li> -->
+                            </ul>
+                        </t>
+                    </templates>
+                </kanban>
+
+            </field>
+        </record>
+        <record id="view_zbs_pipeline_tree" model="ir.ui.view">
+            <field name="model">zbs.pipeline</field>
+            <field name="arch" type="xml">
+                <tree default_order="" string="">
+                    <field name="name" />
+                    <field name="tag_ids" widget="many2many_tags"/>
+                    <field name="limit_parallel_runs"/>
+                    <field name="logoutput"/>
+                    <field name="queuejob_channel"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_zbs_pipeline_search" model="ir.ui.view">
+            <field name="model">zbs.pipeline</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <field name="name" />
+                    <field name="tag_ids" />
+                    <!-- <filter name="group_by_tags" string="Tags" domain="[]" context="{'group_by':'tag_ids'}"/> -->
+                </search>
+            </field>
+        </record>
+
+        <record id="view_zbs_pipeline_line_form" model="ir.ui.view">
+            <field name="name">zbs.pipeline.line form</field>
+            <field name="model">zbs.pipeline.line</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header></header>
+                    <sheet>
+                        <group string="" col="2">
+                            <field name="worker_id" />
+                            <field name="loglevel"/>
+                            <field name="range"/>
+                            <field name="batchsize"/>
+                            <field name="continue_immediately"/>
+                            <field name="enabled"/>
+                            <field name="group_continue_here"/>
+                        </group>
+                        <group string="Keep Input Filter" col='1'>
+                            <field name="keep_input_filter" widget="ace" nolabel='1'/>
+                            <div>
+                                <pre>
+Examples:
+- *
+- record
+- {'newname1': record.oldname1}
+- record.field1, record.field2
+- input.field1, input.field2
+- can be separated by commas
+
+                                </pre>
+                            </div>
+                        </group>
+                        <group string="Path to select iterated item" col='1'>
+                            <field name="path_content" widget="ace" nolabel='1'/>
+                            <div>
+                                <pre>
+Examples:
+- data
+- data.field1.records
+- [{}]
+- {}
+                                </pre>
+                            </div>
+                        </group>
+                        <group string="Condition" col='1'>
+                            <field name="condition" widget="ace" nolabel='1'/>
+                            <div>
+                                <pre>
+Examples:
+- data.field1 == '1'
+- record # execute only if data is there
+                                </pre>
+                            </div>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="ok" string="OK" type="object" />
+                        <button special="cancel" string="Cancel" class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

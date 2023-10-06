@@ -1,0 +1,179 @@
+<odoo>
+    <data noupdate='0'>
+        <record id='webrabber_action' model='ir.actions.act_window'>
+            <field name='name'>Web Workers</field>
+            <field name='res_model'>zbs.web.worker</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+        </record>
+        <menuitem parent="zbsync.menu_grabbers" id="menu_webrabber" action="webrabber_action"/>
+        <record id='authentications_action' model='ir.actions.act_window'>
+            <field name='name'>Web-Authentications</field>
+            <field name='res_model'>zbs.connection.web.auth</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        <menuitem parent="zbsync.menu_connections" id="menu_authentications" action="authentications_action"/>
+        <record id='urls_action' model='ir.actions.act_window'>
+            <field name='name'>Web URLs</field>
+            <field name='res_model'>zbs.web.url</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        <menuitem parent="zbsync.menu_connections" id="menu_urls" action="urls_action"/>
+        <record id='endpoints_action' model='ir.actions.act_window'>
+            <field name='name'>Web-Endpoints</field>
+            <field name='res_model'>zbs.web.endpoint</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        <menuitem parent="zbsync.menu_grabbers" id="menu_endpoints" action="endpoints_action"/>
+
+        <record id="webworker_form" model="ir.ui.view">
+            <field name="model">zbs.web.worker</field>
+            <field name="inherit_id" ref="zbsync.worker_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <group position="after">
+                    <group string="" col="2">
+                        <field name="endpoint_id" required="1"/>
+                        <field name="path" readonly='0'/>
+                        <field name="method" readonly='0'/>
+                    </group>
+                </group>
+            </field>
+        </record>
+        <record id="view_web_url_form" model="ir.ui.view">
+            <field name="name">web.url form</field>
+            <field name="model">zbs.web.url</field>
+            <field name="arch" type="xml">
+                <form string="URL Authentication">
+                    <header></header>
+                    <sheet>
+                        <group string="" col="2">
+                            <field name="name" />
+                            <field name="auth_id" />
+                            <field name="proxy_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_endpointform_form" model="ir.ui.view">
+            <field name="name">endpointform form</field>
+            <field name="model">zbs.web.endpoint</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header></header>
+                    <sheet>
+                        <group string="Web Endpoint" col="2">
+                            <field name="url_id" />
+                            <field name="request_content_type" />
+                            <field name="response_content_type" />
+                            <field name="method" />
+                            <field name="timeout"/>
+                            <field name="path" />
+                            <details>
+                                <summary>Available Objects:</summary>
+                                <ul>
+                                    <li>index: int - number in record; 0 based</li>
+                                    <li>record: the currently processed source record</li>
+                                    <li>input: the complete input data to this worker</li>
+                                </ul>
+                                <h2>Examples</h2>
+                                <ul>
+                                    <li>
+                                        <pre>/todos/{record.id}</pre>
+                                    </li>
+                                    <li>
+                                        <pre>/todos/{record.id}</pre>
+                                    </li>
+                                    <li>
+                                        <pre>
+path = "/todos/put"
+if record.f1 == 'v1':
+    path += "/addonstuff"
+path
+                                        </pre>
+                                    </li>
+                                </ul>
+                            </details>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_zbs_web_endpoint_tree" model="ir.ui.view">
+            <field name="model">zbs.web.endpoint</field>
+            <field name="arch" type="xml">
+                <tree default_order="" string="">
+                    <field name="url_id"/>
+                    <field name="path"/>
+                    <field name="method"/>
+                    <field name="timeout"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_zbs_web_url_tree" model="ir.ui.view">
+            <field name="model">zbs.web.url</field>
+            <field name="arch" type="xml">
+                <tree default_order="" string="">
+                    <field name="name" optional="show hide"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="zbs_connection_web_auth_form" model="ir.ui.view">
+            <field name="name">zbs.connection.web.auth form</field>
+            <field name="model">zbs.connection.web.auth</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group string="" col="2">
+                            <field name="auth_type"/>
+                            <field name="username" attrs="{'invisible': [('auth_type', 'not in', ['basic_auth'])]}"/>
+                            <field name="password" type="password" attrs="{'invisible': [('auth_type', 'not in', ['basic_auth'])]}"/>
+                            <field name="token" attrs="{'invisible': [('auth_type', 'not in', ['bearer_token'])]}"/>
+                            <field name="token_endpoint" attrs="{'invisible': [('auth_type', 'not in', ['oauth2'])]}"/>
+                            <field name="client_id" attrs="{'invisible': [('auth_type', 'not in', ['oauth2'])]}"/>
+                            <field name="client_secret" type="password" attrs="{'invisible': [('auth_type', 'not in', ['oauth2'])]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+
+        </record>
+        <record id="zbs_connection_web_auth_tree" model="ir.ui.view">
+            <field name="model">zbs.connection.web.auth</field>
+            <field name="arch" type="xml">
+                <tree default_order="" string="">
+                    <field name="auth_type"/>
+                    <field name="username"/>
+                    <field name="token"/>
+                    <field name="client_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="zbs_web_proxy_form" model="ir.ui.view">
+            <field name="name">zbs.web.proxy form</field>
+            <field name="model">zbs.web.proxy</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header></header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" colspan="4" class="oe_inline" />
+                            </h1>
+                        </div>
+                        <group string="" col="4">
+                            <field name="protocol" />
+                            <field name="url" placeholder="http://proxy.example.com:8080"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

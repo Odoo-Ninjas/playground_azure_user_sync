@@ -1,0 +1,51 @@
+<odoo>
+	<data noupdate='0'>
+
+		<record id="zbs_instance_line_batch_form" model="ir.ui.view">
+			<field name="name">zbs.instance.line.batch form</field>
+			<field name="model">zbs.instance.line.batch</field>
+			<field name="arch" type="xml">
+				<form string="">
+					<header>
+						<button name="open_logs" string="Open Logs" type="object" />
+						<field name="state" widget="statusbar"/>
+					</header>
+					<sheet>
+						<group string="" col="4">
+							<field name="id"/>
+							<field name="start" />
+							<field name="stop" />
+							<field name="length" />
+							<field name="line_id" />
+							<field name="processed_records"/>
+						</group>
+						<notebook>
+							<page name="error" string="Error" attrs="{'invisible': [('err_desc', '=', False)]}">
+								<field name="err_desc"/>
+							</page>
+							<page name="output" string="Output Data">
+								<field name="output_data"/>
+							</page>
+							<page name="input" string="Input Data">
+								<field name="input_data"/>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="zbs_instance_line_batch_tree" model="ir.ui.view">
+			<field name="model">zbs.instance.line.batch</field>
+			<field name="arch" type="xml">
+				<tree default_order="" string="" decoration-success="state == 'success'" decoration-danger="state=='failed'">
+					<field name="name" />
+					<field name="state"/>
+					<field name="start" />
+					<field name="stop" />
+					<field name="length" />
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</odoo>

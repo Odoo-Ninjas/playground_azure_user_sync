@@ -1,0 +1,5 @@
+* testing aller process aller worker
+* pathfilter beim start des iterierens auswerten
+* excel dumper gibt nun content zurueck
+* odoo grabber:external_odoo_as --> odoo_as
+* code executor removed (must be transformer now)

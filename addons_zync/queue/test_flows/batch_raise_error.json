@@ -1,0 +1,126 @@
+{
+    "keep_instances_for_days": 20,
+    "limit_parallel_runs": 1,
+    "line_ids": [
+        {
+            "batchsize": 0,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": false,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 0,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "identifier": "972a9328-f379-476c-a857-85042835c318",
+                "url": false,
+                "zync_uuid": "55100f82-76db-4149-9226-5a32d8e8fd99",
+                "__record_id": "zbs.start,2",
+                "___model": "zbs.start"
+            },
+            "zync_uuid": "40e80ec0-a282-40ec-87cf-88f74e6f3826",
+            "__record_id": "zbs.pipeline.line,1"
+        },
+        {
+            "batchsize": 0,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": false,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 4,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "content_type": "application/json",
+                "return_data": false,
+                "zync_uuid": "5cf5ce01-501d-4973-aa58-a62102be99c7",
+                "__record_id": "zbs.stop,2",
+                "___model": "zbs.stop"
+            },
+            "zync_uuid": "460e4aa8-e512-4547-946c-34cbcac8bc11",
+            "__record_id": "zbs.pipeline.line,2"
+        },
+        {
+            "batchsize": 0,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": false,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 1,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "data": "[\n    {\n        \"name\": \"Brian Schneider\",\n        \"street\": \"55726 Marshall Fort\\nNew Ronnieside, TX 31832\"\n    },\n    {\n        \"name\": \"Christine Hahn\",\n        \"street\": \"8713 West Knolls Apt. 387\\nWest Lorraine, DC 57394\"\n    }\n]",
+                "demo_count": 2,
+                "name": "-",
+                "zync_uuid": "5c0c2812-de58-4740-9027-9ad1e36fa446",
+                "__record_id": "zbs.const,1",
+                "___model": "zbs.const"
+            },
+            "zync_uuid": "5fade84f-7623-4dcf-8716-5c7337e581e6",
+            "__record_id": "zbs.pipeline.line,4"
+        },
+        {
+            "batchsize": 1,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": false,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 3,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "code": "import time\nfor index, rec in enumerate(data):\n  rec['evaluated'] = True\n  time.sleep(10)\n  if not rec['ok']:\n    raise Exception(\"DUMMY\")\ndata",
+                "name": "-",
+                "propagate_code_result": true,
+                "zync_uuid": "2d1b1130-9bb8-4b5e-8ab8-38877b6de522",
+                "__record_id": "zbs.transformer.python,1",
+                "___model": "zbs.transformer.python"
+            },
+            "zync_uuid": "84eec7dd-c496-4068-8388-39e046782f7e",
+            "__record_id": "zbs.pipeline.line,5"
+        },
+        {
+            "batchsize": 0,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": false,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 2,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "code": "for index, rs in enumerate(data):\n  rs['ok'] = index == 0\ndata",
+                "name": "mark errors",
+                "propagate_code_result": true,
+                "zync_uuid": "621770ee-eb23-4ed5-b6cc-1f523f16819f",
+                "__record_id": "zbs.transformer.python,34",
+                "___model": "zbs.transformer.python"
+            },
+            "zync_uuid": "c438d3ec-a8f2-4bd9-9177-e3706e1da651",
+            "__record_id": "zbs.pipeline.line,34"
+        }
+    ],
+    "logoutput": "odoo_logs",
+    "name": "aaaaa",
+    "queuejob_channel": "root",
+    "tag_ids": [],
+    "version_ids": [],
+    "zync_uuid": "e3cb77c2-2952-49ad-99fa-a1fc9693feb4",
+    "__record_id": "zbs.pipeline,1"
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id='import_pipeline_action' model='ir.actions.act_window'>
+        <field name='name'>Import Pipeline...</field>
+        <field name='res_model'>zbs.import.pipeline</field>
+        <field name='view_mode'>form</field>
+        <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+    </record>
+    <menuitem parent="zbsync.menu_pipelines" id="menu_import_pipeline" action="import_pipeline_action" sequence="9999"/>
+</odoo>

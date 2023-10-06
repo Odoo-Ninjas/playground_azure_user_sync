@@ -1,0 +1,21 @@
+<odoo>
+    <data noupdate='0'>
+
+        <record id='filegrabber_action' model='ir.actions.act_window'>
+            <field name='name'>Files</field>
+            <field name='res_model'>zbs.grabber.file</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> Nothing found!</p>]]></field>
+        </record>
+        <menuitem parent="zbsync.menu_grabbers" id="menu_filegrabber" action="filegrabber_action"/>
+
+        <record id='filedumper_action' model='ir.actions.act_window'>
+            <field name='name'>Files</field>
+            <field name='res_model'>zbs.dumper.file</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> Nothing found!</p>]]></field>
+        </record>
+        <menuitem parent="zbsync.menu_dumpers" id="menu_filedumper" action="filedumper_action"/>
+
+    </data>
+</odoo>

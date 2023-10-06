@@ -1,0 +1,4 @@
+model_id:id,group_id:id,id,name,perm_read,perm_write,perm_create,perm_unlink
+model_zbs_receive_authorizer,,zbs_receive_authorizer_,n/a,1,0,0,0
+model_zbs_receive_authorizer,zbsync.group_manager,zbs_receive_authorizer_zbsync_group_manager,n/a,1,1,1,1
+

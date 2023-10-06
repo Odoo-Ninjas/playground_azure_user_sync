@@ -1,0 +1,16 @@
+<odoo>
+    <data noupdate='0'>
+
+        <record id="view_zbs_domain_odoo_form" model="ir.ui.view">
+            <field name="name">zbs.domain.odoo form</field>
+            <field name="model">zbs.domain.odoo</field>
+            <field name="inherit_id" ref="zbsync.view_zbs_domain_form"></field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <data></data>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

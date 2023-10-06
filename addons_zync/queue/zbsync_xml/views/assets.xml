@@ -1,0 +1,12 @@
+<odoo>
+	<data>
+        <!--
+		<template id="assets_backend" name="zbsync_xml assets" inherit_id="web.assets_backend">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/zbsync_xml/static/src/js/zbsync_xml.js"></script>
+                <link rel="stylesheet" href="/zbsync_xml/static/src/css/zbsync_xml.css"/>
+			</xpath>
+		</template>
+        -->
+	</data>
+</odoo>

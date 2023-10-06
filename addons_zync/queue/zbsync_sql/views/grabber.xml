@@ -1,0 +1,37 @@
+<odoo>
+    <data noupdate='0'>
+        <record id="view_zbs_grabber_grabber_form" model="ir.ui.view">
+            <field name="name">zbs.grabber.grabber form</field>
+            <field name="model">zbs.grabber.sql</field>
+            <field name="inherit_id" ref="zbsync.worker_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <group position="after">
+                    <group string="" col="2">
+                        <field name="connection_id" />
+                    </group>
+                    <group string="SQL">
+                        <field name="sql" widget="ace" nolabel="1">
+
+                        </field>
+                        <div>
+                            <p>Usage:</p>
+                            <ul>
+                                <li>{where} - compiled where clause from domain like: 'SELECT * FROM x WHERE {where}'</li>
+                            </ul>
+                        </div>
+                    </group>
+                    <group string="Domains">
+                        <field name="domain_ids" nolabel="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="usage"/>
+                                <field name="domain"/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+</odoo>

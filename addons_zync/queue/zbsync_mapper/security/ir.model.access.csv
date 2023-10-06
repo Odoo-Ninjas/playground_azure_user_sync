@@ -1,0 +1,12 @@
+model_id:id,group_id:id,id,name,perm_read,perm_write,perm_create,perm_unlink
+model_zbs_mapper,zbsync.group_manager,access_zbs_mapper_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_mapping,zbsync.group_manager,zbs_mapping_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_mapping_pyfunc,zbsync.group_manager,zbs_mapping_pyfunc_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_mapping_mapvalues,zbsync.group_manager,zbs_mapping_mapvalues_zbsync_group_manager,n/a,1,1,1,1
+
+
+model_zbs_mapper,base.group_user,access_zbs_mapper_base.group_user,n/a,1,0,0,0
+model_zbs_mapping,base.group_user,zbs_mapping_base.group_user,n/a,1,0,0,0
+model_zbs_mapping_pyfunc,base.group_user,zbs_mapping_pyfunc_base.group_user,n/a,1,0,0,0
+model_zbs_mapping_mapvalues,base.group_user,zbs_mapping_mapvalues_base.group_user,n/a,1,0,0,0
+

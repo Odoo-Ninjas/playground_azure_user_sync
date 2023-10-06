@@ -1,0 +1,47 @@
+<odoo>
+    <data noupdate='0'>
+
+        <menuitem name="Zebroo Sync" parent="" id="root_menu" groups="zbsync.group_manager"/>
+        <menuitem name="Connections" parent="root_menu" id="menu_connections" sequence="8000"/>
+        <menuitem name="Pipelines" parent="root_menu" id="menu_pipelines" sequence="1000"/>
+        <menuitem name="Grabbers" parent="root_menu" id="menu_grabbers" sequence="8000"/>
+        <menuitem name="Dumpers" parent="root_menu" id="menu_dumpers" sequence="8000"/>
+        <menuitem name="Triggers" parent="root_menu" id="menu_triggers" sequence="8000"/>
+        <menuitem name="Cronjobs" parent="root_menu" id="menu_cronjobs" sequence="8000"/>
+        <menuitem name="Configuration" parent="root_menu" id="menu_config" sequence="99999"/>
+    </data>
+    <data>
+        <record id='pipelines_action' model='ir.actions.act_window'>
+            <field name='name'>Pipelines</field>
+            <field name='res_model'>zbs.pipeline</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+        </record>
+        <menuitem parent="menu_pipelines" id="menu_pipelines_pipelines" action="pipelines_action"/>
+
+        <record id='instances_action' model='ir.actions.act_window'>
+            <field name='name'>Instances</field>
+            <field name='res_model'>zbs.instance</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+        </record>
+        <menuitem parent="menu_pipelines" id="menu_instances" action="instances_action"/>
+
+        <record id='pipelinetags_action' model='ir.actions.act_window'>
+            <field name='name'>Pipeline-Tags</field>
+            <field name='res_model'>zbs.pipeline.tag</field>
+            <field name='view_mode'>tree</field>
+            <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+        </record>
+        <menuitem parent="menu_config" id="menu_pipelinetags" action="pipelinetags_action"/>
+
+        <record id='cronstarts_action' model='ir.actions.act_window'>
+            <field name='name'>Cron-Jobs</field>
+            <field name='res_model'>zbs.cronstart</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+        </record>
+        <menuitem parent="zbsync.menu_pipelines" id="menu_cronstarts" action="cronstarts_action"/>
+
+    </data>
+</odoo>

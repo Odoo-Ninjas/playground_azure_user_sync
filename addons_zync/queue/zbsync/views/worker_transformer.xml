@@ -1,0 +1,70 @@
+<odoo>
+    <data noupdate='0'>
+        <record id="view_zbs_transformer_form1" model="ir.ui.view">
+            <field name="name">zbs.transformer form</field>
+            <field name="model">zbs.transformer.python</field>
+            <field name="inherit_id" ref="worker_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="inside">
+                    <notebook>
+                        <page string="Code">
+                            <group string="Code" col="1">
+                                <field name="code" widget="ace" nolabel="1" />
+                                <details>
+                                    <summary>Available objects:</summary>
+                                    <ul>
+                                        <li>
+                                            <b>record</b>: the current iterated record</li>
+                                        <li>
+                                            <b>data</b>: complete input data</li>
+                                        <li>
+                                            <b>env</b>: odoo environment</li>
+                                        <li>
+                                            <b>instance_env</b>: environment of pipeline instance</li>
+                                        <li>
+                                            <b>last_execution_date</b>: the last time this kind of pipeline ran</li>
+                                        <li>
+                                            <b>datetime</b>: datetime-datetime object</li>
+                                        <li>
+                                            <b>date</b>: datetime-dateobject</li>
+                                        <li>
+                                            <b>timedelta</b>: timedelta object</li>
+                                        <li>
+                                            <b>arrow</b>: arrow lib</li>
+                                    </ul>
+
+                                    <h2>Example</h2>
+                                    <pre>
+value1 = data[0]
+value1 *= 2
+value1  # to return value
+                                    </pre>
+                                </details>
+                            </group>
+                        </page>
+                        <page string="Settings">
+                            <group string="" col="1">
+                                <field name="propagate_code_result"/>
+                                <details>
+                                    <summary>Explaining Reduce</summary>
+                                    <p>
+By Example:If you have 1000 records and you want to get the sum of one of its float values,
+then you sum up the float value of every line. The result is a scalar value,
+the records vanished. This means reducing. The single scalar value is passed as it is
+as a result of the this process.
+                                    </p>
+                                    <p>
+        In otherwords: with reduce you enforce that the result of the code is passed
+        "as it is" to the next step.
+                                    </p>
+                                </details>
+                            </group>
+
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

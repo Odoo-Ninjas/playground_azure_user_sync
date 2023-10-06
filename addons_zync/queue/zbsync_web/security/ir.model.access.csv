@@ -1,0 +1,9 @@
+model_id:id,group_id:id,id,name,perm_read,perm_write,perm_create,perm_unlink
+model_zbs_web_endpoint,zbsync.group_manager,access_web_endpoint_group_manager,n/a,1,1,1,1
+model_zbs_connection_web_auth,zbsync.group_manager,zbs_connection_web_auth_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_web_url,zbsync.group_manager,zbs_web_url_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_web_worker,zbsync.group_manager,zbs_web_worker_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_web_proxy,zbsync.group_manager,zbs_web_proxy_zbsync_group_manager,n/a,1,1,1,1
+
+
+

@@ -1,0 +1,34 @@
+<odoo>
+	<data noupdate='0'>
+
+
+		<record id="view_zbs_pipeline_form" model="ir.ui.view">
+			<field name="model">zbs.pipeline</field>
+			<field name="inherit_id" ref="zbsync.view_zbs_pipeline_form"/>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					<page name="form_action" string="Form Action">
+						<group string="Button in Forms">
+							<field name="form_action_model_id"/>
+							<button name="add_form_action" string="Add Form Action" type="object" />
+							<button name="remove_form_action" string="Remove Form Action" type="object" />
+						</group>
+						<group string="File Upload Dialog" col='2'>
+							<group>
+								<field name="parent_menu_id"/>
+								<button name="add_fileupload_wizard" string="Add Upload Dialog" type="object" />
+							</group>
+							<group string="Menu Items" colspan='2'>
+								<field name="created_menu_item_ids" nolabel="1" />
+							</group>
+							<group string="Window Actions" colspan='2'>
+								<field name="created_window_action_ids" nolabel="1" />
+							</group>
+						</group>
+					</page>
+				</notebook>
+			</field>
+		</record>
+
+	</data>
+</odoo>

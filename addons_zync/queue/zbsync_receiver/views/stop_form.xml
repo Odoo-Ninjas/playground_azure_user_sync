@@ -1,0 +1,17 @@
+<odoo>
+    <data noupdate='0'>
+        <record id="stop_form" model="ir.ui.view">
+            <field name="inherit_id" ref="zbsync.stop_form"/>
+            <field name="name">zbs.stop form</field>
+            <field name="model">zbs.stop</field>
+            <field name="arch" type="xml">
+                <sheet position="inside">
+                    <group>
+                        <field name="return_data"/>
+                        <field name="content_type"/>
+                    </group>
+                </sheet>
+            </field>
+        </record>
+    </data>
+</odoo>

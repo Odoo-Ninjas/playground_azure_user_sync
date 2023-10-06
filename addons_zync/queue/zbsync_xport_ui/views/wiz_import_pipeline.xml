@@ -1,0 +1,28 @@
+<odoo>
+    <data noupdate='0'>
+
+        <record id="view_zbs_import_pipeline_form" model="ir.ui.view">
+            <field name="name">zbs.import.pipeline form</field>
+            <field name="model">zbs.import.pipeline</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="ok" string="OK" type="object" />
+                    </header>
+                    <sheet>
+                        <group string="" col="2">
+                            <field name="json_content" invisible='1'/>
+                            <field name="filecontent"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="ok" string="OK" type="object" />
+                        <button special="cancel" string="Cancel" class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

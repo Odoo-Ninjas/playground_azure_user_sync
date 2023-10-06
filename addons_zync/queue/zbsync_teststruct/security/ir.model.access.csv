@@ -1,0 +1,5 @@
+model_id:id,group_id:id,id,name,perm_read,perm_write,perm_create,perm_unlink
+model_zbs_test_order,,zbs_test_order_,n/a,1,1,1,1
+model_zbs_test_order_line,,zbs_test_order_line_,n/a,1,1,1,1
+model_zbs_test_partner,,zbs_test_partner_,n/a,1,1,1,1
+model_zbs_test_tag,,zbs_test_tag_,n/a,1,1,1,1

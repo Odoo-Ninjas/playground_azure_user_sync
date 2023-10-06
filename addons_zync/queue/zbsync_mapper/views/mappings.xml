@@ -1,0 +1,215 @@
+<odoo>
+    <data noupdate='0'>
+        <record id="view_zbs_mapper_form" model="ir.ui.view">
+            <field name="name">zbs.mapper form</field>
+            <field name="model">zbs.mapper</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header></header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" colspan="4" class="oe_inline" />
+                            </h1>
+                        </div>
+                        <group string="" col="4">
+                            <field name="can_keys" />
+                            <field name="no_metadata"/>
+                        </group>
+                    </sheet>
+                    <!-- append after <sheet /> and inherit from mail.thread -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_zbs_mapping_tree" model="ir.ui.view">
+            <field name="model">zbs.mapping</field>
+            <field name="arch" type="xml">
+                <tree string="" editable="bottom" multi_edit='1'>
+                    <field name="sequence" widget="handle" class="open_line"/>
+                    <field name="level" readonly='1' optional="hide"/>
+                    <button string="" name="open_mapping" type="object" icon="fa-external-link" />
+                    <field name="id" invisible="0" optional="hide"/>
+                    <field name="force_name" optional="hide"/>
+                    <field name="active" class="open_line" optional="hide"/>
+                    <field name="is_key" class="open_line" optional="hide"/>
+                    <field name="parent_id" domain="[('id', '!=', id), ('step_id', '=', context.get('default_step_id'))]"/>
+                    <field name="field_source" class="open_line"/>
+                    <field name="action" class="open_line" optional="show"/>
+                    <field name="field_dest" class="open_line"/>
+                    <field name="skip_if_empty" optional="hide"/>
+                    <field name="default_value" optional="hide"/>
+                    <field name="filter_to_delta" optional="hide"/>
+                    <field name="skip_if" optional="hide"/>
+                    <field name="may_miss" optional="hide"/>
+                    <field name="format_value" optional="hide"/>
+                    <field name="no_create" optional="hide"/>
+                    <field name="no_update" optional="hide"/>
+                    <field name="output_stream" optional="hide"/>
+                    <field name="skip_record_expr" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_zbs_mapping_search" model="ir.ui.view">
+            <field name="model">zbs.mapping</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <field name="name" />
+                    <searchpanel>
+                        <field name="parent_id" string="Mappings" enable_counters="1"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+        <record id="view_zbs_mapping_form" model="ir.ui.view">
+            <field name="name">zbs.mapping form</field>
+            <field name="model">zbs.mapping</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group string="" col="2">
+                            <field name="force_name"/>
+                            <field name="parent_id"/>
+                            <field name="level" readonly='1'/>
+                            <!-- <field name="pyfunc_id" attrs="{'required': [('action', '=', 'pyfunc')], 'invisible': [('action', '!=', 'pyfunc')]}"/>
+                            <field name="code" widget="ace" options="{'model': 'python'}" attrs="{'required': [('action', '=', 'code)], 'invisible': [('action', '!=', 'code')]}"/> -->
+                        </group>
+                        <group col='3' string="Field Map">
+                            <field name="field_source" nolabel='1'/>
+                            <div>
+                                <ul>
+                                    <li>$value</li>
+                                </ul>
+                            </div>
+                            <field name="action" nolabel='1'/>
+                            <field name="field_dest" nolabel='1'/>
+                        </group>
+                        <group attrs="{'invisible': [('action', '!=', 'lookup')]}">
+                            <field name="lookup_model" attrs="{'required': [('action', '=', 'lookup')]}"/>
+                            <field name="lookup_field" attrs="{'required': [('action', '=', 'lookup')]}"/>
+                            <field name="lookup_operator" attrs="{'required': [('action', '=', 'lookup')]}"/>
+                            <div>
+                                <ul>
+                                    <li>If base data has several items in  the field separated by comm, then split the values in the
+                                pre filter like "value.split(',')". Then the recordset is interpreted as several string values
+                                and if destination is a many2many field, then those values are all set.</li>
+                                </ul>
+                            </div>
+                        </group>
+                        <notebook>
+                            <page string="Mapped Values" attrs="{'invisible': [('action', '!=', 'mapped_values')]}">
+                                <group>
+                                    <field name="strict_mapped_types"/>
+                                </group>
+                                <field name="mapped_value_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="source_value"/>
+                                        <field name="dest_value"/>
+                                        <field name="default_value"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Code" attrs="{'invisible': [('action', '!=', 'eval')]}">
+                                <group col='1'>
+                                    <field name="code" widget="ace" nolabel="1">
+                                    </field>
+                                    <div>
+                                        <ul>
+                                            <li>record</li>
+                                            <li>mapped</li>
+                                            <li>value</li>
+                                            <li>raise SkipRecord()</li>
+                                        </ul>
+                                    </div>
+                                </group>
+                            </page>
+                            <page string="Skip Record">
+                                <group col='1'>
+                                    <field name="skip_record_expr" widget="ace" nolabel="1">
+                                    </field>
+                                    <div>
+                                        If condition is met, then the record is skipped.
+                                    </div>
+                                    <div>
+                                        <ul>
+                                            <li>record</li>
+                                            <li>mapped</li>
+                                            <li>value</li>
+                                        </ul>
+                                    </div>
+                                </group>
+                            </page>
+                            <page string="Children">
+                                <group>
+                                    <field name="child_ids" nolabel="1" context="{'active_test': False, 'no_js_click': True}">
+                                        <tree editable="bottom">
+                                            <field name="id" invisible="0"/>
+                                            <field name="force_name"/>
+                                            <field name="parent_id"/>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="active"/>
+                                            <field name="is_key" widget="toggle_boolean"/>
+                                            <field name="field_source"/>
+                                            <field name="action"/>
+                                            <field name="field_dest"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Format Filter">
+                                <div>This filter is applied at getting the information from the source record sets.</div>
+                                <field name="format_value" widget="ace" nolabel="1" placeholder="str(value).strip()">
+                                </field>
+                                <details>
+                                    <summary>examples</summary>
+                                    <ul>
+                                        <li>
+                                            <pre>
+value = str(value)
+if value == "None":
+....value = False
+value
+                                            </pre>
+                                        </li>
+                                        <li>
+                                        If you use multi-line, then the last statement should be 'value'
+                                        </li>
+                                    </ul>
+                                </details>
+                            </page>
+                            <page string="Details">
+                                <group col='4'>
+                                    <field name="is_key"/>
+                                    <field name="may_miss"/>
+                                    <field name="skip_if_empty"/>
+                                    <field name="filter_to_delta"/>
+                                    <field name="default_value"/>
+                                    <field name="skip_if"/>
+                                    <field name="no_create"/>
+                                    <field name="no_update"/>
+                                    <field name="output_stream"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="list_map_values" model="ir.ui.view">
+            <field name="model">zbs.mapping.mapvalues</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="source_value"/>
+                    <field name="dest_value"/>
+                    <field name="strict_types"/>
+                    <field name="default_value"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

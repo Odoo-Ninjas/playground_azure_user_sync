@@ -1,0 +1,54 @@
+<odoo>
+    <data noupdate='0'>
+        <record id="view_zbs_instance_env_dumper_form" model="ir.ui.view">
+            <field name="name">zbs.instance_env_dumper form</field>
+            <field name="model">zbs.instance.env.dumper</field>
+            <field name="inherit_id" ref="worker_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="inside">
+                    <notebook>
+                        <page string="Instance Env Dumper">
+                            <group string="Code" col="1">
+                                <field name="line_ids"  nolabel="1" >
+									<tree editable="bottom">
+										<field name="key"/>
+										<field name="code"/>
+									</tree>
+								</field>
+                                <details>
+                                    <summary>Available objects:</summary>
+                                    <ul>
+										<li>
+                                            <b>data</b>: complete input data</li>
+                                        <li>
+                                            <b>env</b>: odoo environment</li>
+                                        <li>
+                                            <b>instance_env</b>: environment of pipeline instance</li>
+                                        <li>
+                                            <b>last_execution_date</b>: the last time this kind of pipeline ran</li>
+                                        <li>
+                                            <b>datetime</b>: datetime-datetime object</li>
+                                        <li>
+                                            <b>date</b>: datetime-dateobject</li>
+                                        <li>
+                                            <b>timedelta</b>: timedelta object</li>
+                                        <li>
+                                            <b>arrow</b>: arrow lib</li>
+                                    </ul>
+
+                                    <h2>Example</h2>
+                                    <pre>
+value1 = data[0]
+value1 *= 2
+value1  # to return value
+                                    </pre>
+                                </details>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

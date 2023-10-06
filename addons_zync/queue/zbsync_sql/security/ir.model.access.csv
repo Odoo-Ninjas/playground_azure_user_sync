@@ -1,0 +1,7 @@
+model_id:id,group_id:id,id,name,perm_read,perm_write,perm_create,perm_unlink
+model_zbs_grabber_sql,zbsync.group_manager,zbs_grabber_sql_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_dumper_sql,zbsync.group_manager,zbs_dumper_sql_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_connection_sql,zbsync.group_manager,zbs_sql_connection_sql_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_domain_sql,zbsync.group_manager,zbs_domain_sql_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_plain_sql,zbsync.group_manager,zbs_dumper_plain_sql_zbsync_group_manager,n/a,1,1,1,1
+

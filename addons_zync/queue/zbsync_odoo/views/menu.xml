@@ -1,0 +1,28 @@
+<odoo>
+    <data noupdate='0'>
+
+        <record id='connection_action' model='ir.actions.act_window'>
+            <field name='name'>Odoo-Connections</field>
+            <field name='res_model'>zbs.connection.odoo</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        <menuitem parent="zbsync.menu_connections" id="menu_odooconnection" action="connection_action"/>
+
+        <record id='odoo_grabber_action' model='ir.actions.act_window'>
+            <field name='name'>Odoo</field>
+            <field name='res_model'>zbs.grabber.odoo</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+        </record>
+        <menuitem parent="zbsync.menu_grabbers" id="menu_odoo_grabber" action="odoo_grabber_action"/>
+
+        <record id='dumper_action' model='ir.actions.act_window'>
+            <field name='name'>Odoo</field>
+            <field name='res_model'>zbs.dumper.odoo</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+        </record>
+        <menuitem parent="zbsync.menu_dumpers" id="menu_dumper" action="dumper_action"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+model_id:id,group_id:id,id,name,perm_read,perm_write,perm_create,perm_unlink
+model_zbs_connection_odoo,zbsync.group_manager,access_zbs_connection_odoo_zbsync.group_manager,n/a,1,1,1,1
+model_zbs_dumper_odoo,zbsync.group_manager,zbs_dumper_odoo_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_grabber_odoo,zbsync.group_manager,zbs_grabber_odoo_zbsync_group_manager,n/a,1,1,1,1
+model_zbs_domain_odoo,zbsync.group_manager,zbs_domain_odoo_zbsync_group_manager,n/a,1,1,1,1
+
+
+

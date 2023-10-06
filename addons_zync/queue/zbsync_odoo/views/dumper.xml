@@ -1,0 +1,25 @@
+<odoo>
+    <data noupdate='0'>
+
+        <record id="view_odoo_dumper_form" model="ir.ui.view">
+            <field name="name">zbs.dumper.odoo form</field>
+            <field name="model">zbs.dumper.odoo</field>
+            <field name="inherit_id" ref="zbsync.worker_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <group position="after">
+                    <group string="" col="2">
+                        <field name="connection_id" required="1"/>
+                        <field name="model" required="1"/>
+                        <field name="only_new_values"/>
+                        <field name="do_insert"/>
+                        <field name="do_update"/>
+                        <field name="lang"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

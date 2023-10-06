@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate='0'>
+
+        <menuitem id="root_menu" name="Wizards" parent="zbsync.root_menu" sequence="1"/>
+
+        <record id='new_excel_action' model='ir.actions.act_window'>
+            <field name='name'>Import Excel from file</field>
+            <field name='res_model'>zbsync.wiz.import_excel</field>
+            <field name='view_mode'>tree,form</field>
+            <field name="help"><![CDATA[<p> Nothing found!</p>]]></field>
+        </record>
+
+    </data>
+</odoo>

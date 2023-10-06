@@ -1,0 +1,12 @@
+<odoo>
+	<data noupdate='0'>
+
+		<record id="el_stop" model="zbs.stop">
+			<field name="name">stop</field>
+		</record>
+		<record id="el_start" model="zbs.start">
+			<field name="name">start</field>
+		</record>
+
+	</data>
+</odoo>

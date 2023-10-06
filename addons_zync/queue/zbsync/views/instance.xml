@@ -1,0 +1,133 @@
+<odoo>
+    <data noupdate='0'>
+
+        <record id="view_zbs_pipeline_instance_tree" model="ir.ui.view">
+            <field name="model">zbs.instance</field>
+            <field name="arch" type="xml">
+                <tree default_order="" string="">
+                    <field name="pipeline_id"/>
+                    <field name="name" />
+                    <field name="state"/>
+                    <field name="next_line_id"/>
+                    <field name="origin"/>
+                    <field name="test_mode"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                    <field name="last_heartbeat"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_zbs_instance_form" model="ir.ui.view">
+            <field name="name">zbs.instance form</field>
+            <field name="model">zbs.instance</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button name="heartbeat_ui" string="Heartbeat" type="object"/>
+                        <button name="replay" string="Replay" type="object"/>
+                        <button name="clear_messages" string="Clear Wall" type="object" />
+                        <field name="state" widget="statusbar" attrs="{'readonly': True}"/>
+                        <button name="abort" string="Abort" type="object" attrs="{'invisible': [('state', 'not in', ['running', 'pending'])]}"/>
+                        <button name="retry" string="Retry" type="object" attrs="{'invisible': [('state', 'not in', ['success', 'failed'])]}"/>
+                    </header>
+                    <sheet>
+                        <group col='4'>
+                            <field name="pipeline_id" />
+                            <field name="create_date"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="test_mode"/>
+                        </group>
+                        <notebook>
+                            <page string="Flow">
+                                <group col='2'>
+                                    <!-- <field name="pipeline_line_id" groups="base.group_no_one" domain="[('pipeline_id', '=', pipeline_id)]"/> -->
+                                    <field name="line_ids" nolabel="1" colspan='2'>
+                                        <tree editable="bottom" create='0' decoration-bf="is_current" decoration-danger="has_failed" deocration-sucess="only_success">
+                                            <button name="make_current" string="" type="object" icon="fa-play"/>
+                                            <button name="open_worker_detail" string="" type="object" icon="fa-external-link" attrs="{'invisible': [('can_open_worker_detail', '=', False)]}"/>
+                                            <field name="can_open_worker_detail" invisible="1"/>
+                                            <field name="is_current" invisible='1'/>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="ttype_name"/>
+                                            <field name="worker_id"/>
+                                            <field name="keep_input_filter" class="open_line"/>
+                                            <field name="enabled"/>
+                                            <button name="open_logs" string="" type="object" icon="fa-history"/>
+                                            <button name="open_logs_list" string="" type="object" icon="fa-list"/>
+                                            <field name="processed_records" readonly="1"/>
+                                            <field name="range"/>
+                                            <field name="batches" class="open_line open_batches"/>
+                                            <field name="only_success" invisible="1"/>
+                                            <field name="has_failed" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page name="initial_data" string="Initial Data">
+                                <field name="initial_data"/>
+                            </page>
+                            <page name="environment" string="Environment">
+                                <field name="environment"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_zbs_instance_search" model="ir.ui.view">
+            <field name="model">zbs.instance</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <field name="name" />
+                    <field name="tag_ids" />
+                    <filter string="Error" name="error" domain="[('state', '=', 'failed')]" />
+                    <filter string="Success" name="done" domain="[('state', '=', 'success')]" />
+                    <filter name="group_by_tags" string="Tags" domain="[]" context="{'group_by':'tag_ids'}"/>
+                    <filter name="group_by_state" string="State" domain="[]" context="{'group_by':'state'}"/>
+                    <filter name="group_by_pipeline" string="Pipeline" domain="[]" context="{'group_by':'pipeline_id'}"/>
+                    <filter name="group_by_start" string="Date Started" domain="[]" context="{'group_by':'date_start'}"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_zbs_instance_line_form" model="ir.ui.view">
+            <field name="name">zbs.instance.line form</field>
+            <field name="model">zbs.instance.line</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header></header>
+                    <sheet>
+                        <group string="" col="2">
+                            <field name="worker_id" />
+                            <field name="range"/>
+                        </group>
+                        <group string="Keep Input Filter" col='1'>
+                            <field name="keep_input_filter" widget="ace" nolabel='1'/>
+                            <div>
+                                <pre>
+Examples:
+- input / *, input.field1: data which is used per record
+- record, record.field1: the single input record
+- index: the nth record
+- can be separated by commas
+
+                                </pre>
+                            </div>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="ok" string="OK" type="object" />
+                        <button special="cancel" string="Cancel" class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

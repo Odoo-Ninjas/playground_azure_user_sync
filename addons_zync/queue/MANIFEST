@@ -1,0 +1,32 @@
+{
+    "version": 14.0,
+    "install": [
+        "zbsync",
+        "zbsync_excel_csv",
+        "zbsync_files",
+        "zbsync_json",
+        "zbsync_mapper",
+        "zbsync_odoo",
+        "zbsync_odoo_mapper",
+        "zbsync_queuejob",
+        "zbsync_receiver",
+        "zbsync_soap",
+        "zbsync_sql",
+        "zbsync_teststruct",
+        "zbsync_trigger_methods",
+        "zbsync_web",
+        "zbsync_wizards",
+        "zbsync_xml",
+        "zbsync_xport",
+        "zbsync_xport_ui"
+    ],
+    "addons_paths": [
+        "odoo/odoo/addons",
+        "odoo/addons",
+        "addons_OCA/queue",
+        "addons_OCA/web",
+        "addons_OCA",
+        "addons_tools/method_hook_triggers",
+        "."
+    ]
+}

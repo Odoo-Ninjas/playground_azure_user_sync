@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id="view_zbs_cronstart_tree" model="ir.ui.view">
+            <field name="model">zbs.cronstart</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" invisible="1"/>
+                    <field name="name" />
+                    <field name="no_double_starts"/>
+                    <button name="open_cronjobs" string="Cron-Jobs" type="object" />
+                    <field name="cronjob_ids" widget="many2many_tags" context="{
+                        'default_pipeline_ids': id,
+                        'active_id': id,
+                        'active_model': 'zbs.cronstart',
+                    }"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_zbs_cronstart_form" model="ir.ui.view">
+            <field name="name">zbs.cronstart form</field>
+            <field name="model">zbs.cronstart</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header></header>
+                    <sheet>
+                        <group string="" col="4">
+                            <field name="name"/>
+                            <field name="pipeline_ids" widget="many2many_tags" />
+                            <field name="no_double_starts"/>
+                        </group>
+                        <field name="cronjob_ids" nolabel="1" context="{'active_test': False, 'default_interval_type': 'hours', 'default_cronstart_id': id}">
+                            <tree editable="bottom">
+                                <field name="name" invisible="1"/>
+                                <field name="interval_number"/>
+                                <field name="interval_type"/>
+                                <field name="numbercall" invisible='1'/>
+                                <field name="nextcall"/>
+                                <field name="active" invisible='1'/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

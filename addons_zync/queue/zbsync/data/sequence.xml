@@ -1,0 +1,9 @@
+<odoo>
+	<data noupdate='0'>
+
+		<record id="sequence_zbs_instance" model="ir.sequence">
+			<field name="name">zebroo-sync instance sequence</field>
+		</record>
+
+	</data>
+</odoo>

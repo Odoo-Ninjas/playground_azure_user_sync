@@ -1,0 +1,14 @@
+<odoo>
+	<data noupdate='0'>
+
+		<record id='soap_grabber_action' model='ir.actions.act_window'>
+			<field name='name'>SOAP</field>
+			<field name='res_model'>zbs.grabber.soap</field>
+			<field name='view_mode'>tree,form</field>
+			<field name="help"><![CDATA[<p> Nothing found!</p>]]></field>
+		</record>
+		<menuitem parent="zbsync.menu_grabbers" id="menu_soap_grabber" action="soap_grabber_action"/>
+
+
+	</data>
+</odoo>

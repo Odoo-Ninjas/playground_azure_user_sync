@@ -1,0 +1,80 @@
+{
+    "keep_instances_for_days": 20,
+    "limit_parallel_runs": 1,
+    "line_ids": [
+        {
+            "batchsize": 0,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": true,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 0,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "identifier": "12c13ed6-eee2-4309-a286-9018c1153e63",
+                "url": false,
+                "zync_uuid": "acd82579-6f94-4570-8df3-ad69f736771b",
+                "__record_id": "zbs.start,34",
+                "___model": "zbs.start"
+            },
+            "zync_uuid": "b8c7849b-05b0-421a-a6ad-3eb3a6d01161",
+            "__record_id": "zbs.pipeline.line,35"
+        },
+        {
+            "batchsize": 0,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": true,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 2,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "content_type": "application/json",
+                "return_data": false,
+                "zync_uuid": "c67b7e65-5ca5-4c9e-abad-d5bf740cc8f4",
+                "__record_id": "zbs.stop,34",
+                "___model": "zbs.stop"
+            },
+            "zync_uuid": "ad0063c5-bc46-45ce-8545-35396c50b8e9",
+            "__record_id": "zbs.pipeline.line,36"
+        },
+        {
+            "batchsize": 0,
+            "can_open_worker_detail": false,
+            "condition": "True",
+            "continue_immediately": true,
+            "enabled": true,
+            "loglevel": "info",
+            "name": false,
+            "own_queuejob": false,
+            "sequence": 1,
+            "ttype_name": false,
+            "worker_id": {
+                "can_open_worker_detail": false,
+                "data": "[\n    {\n        \"name\": \"Andrea Cook\",\n        \"street\": \"2052 Jeffery Divide\\nEast Daniel, GU 51007\"\n    }\n]",
+                "demo_count": 1,
+                "name": "-",
+                "zync_uuid": "c6389da7-0343-4c07-954e-1011ce1d989f",
+                "__record_id": "zbs.const,34",
+                "___model": "zbs.const"
+            },
+            "zync_uuid": "d56433b4-d6ef-4b12-8429-42935abcae95",
+            "__record_id": "zbs.pipeline.line,37"
+        }
+    ],
+    "logoutput": "odoo_logs",
+    "name": "receiver",
+    "queuejob_channel": "root",
+    "tag_ids": [],
+    "version_ids": [],
+    "zync_uuid": "94eb3870-b88c-405f-b814-1b571f14d003",
+    "__record_id": "zbs.pipeline,34"
+}

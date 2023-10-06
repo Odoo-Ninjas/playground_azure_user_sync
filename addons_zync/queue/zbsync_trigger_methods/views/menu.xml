@@ -1,0 +1,9 @@
+<odoo>
+	<record id='method_hook_triggers_action' model='ir.actions.act_window'>
+		<field name='name'>Method Hooks</field>
+		<field name='res_model'>zbs.trigger.methodhook</field>
+		<field name='view_mode'>tree,form</field>
+		<field name="help"><![CDATA[<p> No  found!  </p>]]></field>
+	</record>
+	<menuitem parent="zbsync.menu_grabbers" id="menu_method_hook_triggers" action="method_hook_triggers_action"/>
+</odoo>

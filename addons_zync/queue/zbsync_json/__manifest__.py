@@ -1,0 +1,11 @@
+{   'application': False,
+    'author': 'Marc Wimmer (marc@itewimmer.de)',
+    'css': [],
+    'data': [],
+    'demo': [],
+    'depends': ['base'],
+    'external_dependencies': {'bin': [], 'python': []},
+    'name': 'zbsync_json',
+    'qweb': [],
+    'test': [],
+    'version': '1.0'}
