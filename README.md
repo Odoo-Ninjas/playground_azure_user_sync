@@ -1,33 +1,7 @@
-# onboarding odoo
+# test user sync
 
-Install gimera and wodoo 
-```
-one time:
-pipx install gimera
-pipx install wodoo
-gimera completion -x
-odoo completion -x
-<relogin bash>
+Hab das odoo aufgesetzt um zu verstehen ob die oauth url genutzt wird.
+Wenn man ein access token verwendet braucht man das gar nicht.
 
-then for the odoo:
-gimera apply    #one time / not often
-odoo reload     # more often called
-odoo build      # more often called
-odoo -f db reset -C  # to reset a db
-odoo update     # often called
-odoo up -d      # often called
-```
+/test.py hat dann funktionierenden Code und listet die users
 
-## Setup Proxy Port
-
-```
-~/.odoo/settings:
-
-PROXY_PORT=8888
-```
-
-```
-odoo reload
-odoo up -d
-```
---> Odoo runs on port 8888
