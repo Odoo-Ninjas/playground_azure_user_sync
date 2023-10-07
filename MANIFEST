@@ -1,5 +1,5 @@
 {
-	"version": "16.0",
+	"version": "14.0",
 	"install": [
         "crm",
         "sale",
@@ -10,6 +10,7 @@
     "addons_paths": [
         "odoo/odoo/addons",
         "odoo/addons",
+        "addons_zbsync",
 	],
 
 }

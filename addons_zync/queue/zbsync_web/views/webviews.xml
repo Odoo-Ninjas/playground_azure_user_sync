@@ -149,8 +149,7 @@ path
                     <field name="auth_type"/>
                     <field name="username"/>
                     <field name="token"/>
-                    <field name="client_id"/>
-                </tree>
+</tree>
             </field>
         </record>
 

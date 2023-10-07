@@ -30,4 +30,4 @@ repos:
 - branch: oauth
   path: addons_zbsync
   type: submodule
-  url: git@github.com:Odoo-Ninjas/zbsync
+  url: git@github.com:Odoo-Ninjas/zebroo-sync
